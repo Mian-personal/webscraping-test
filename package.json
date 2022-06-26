@@ -5,6 +5,13 @@
   "description": "",
   "main": "src/server.tsx",
   "scripts": {
+    "start": "node server.js",
+    "build:compile": "tsc -p tsconfig.json",
+    "build:copy-index": "copyfiles -u 1 src/index.html ./dist/",
+    "build:copy-package": "copyfiles package.json ./dist/",
+    "build:dist-ec2": "copyfiles -a -u 1 dist-ec2/**/* ./dist/",
+    "zip-dist": "npm-build-zip --source=dist/ --destination=dist",
+    "build": "npm-run-all build:* && npm run zip-dist",
     "serve": "ts-node-dev --respawn src/server.tsx"
   },
   "dependencies": {
@@ -25,8 +32,11 @@
     "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.18.0",
     "eslint-plugin-react": "^7.30.1",
+    "npm-build-zip": "^1.0.3",
+    "npm-run-all": "^4.1.5",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.7.4"
   }

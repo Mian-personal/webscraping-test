@@ -10,7 +10,7 @@ export async function extract(sources:Array<Source>, searchQuery:string):Promise
   const browser = await puppeteer.launch();
     
   async function extractFromSource(source:Source):Promise<SourceData> {
-    const url = source.url(searchQuery);
+    const url = source.url(searchQuery.toLowerCase());
     const page = await browser.newPage();
     page.setDefaultTimeout(15000);
     await page.goto(url);

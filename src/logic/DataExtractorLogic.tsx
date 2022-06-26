@@ -1,12 +1,7 @@
 import { Page } from 'puppeteer';
 import { DataExtractorResult, DataType } from '../types/Source';
 
-export async function extractTextContent(page:Page, 
-  label:string, 
-  type:DataType, 
-  selector:string,
-  transformFct?:(string:string)=>string
-):Promise<DataExtractorResult> {
+export async function extractTextContent(page:Page, label:string, type:DataType, selector:string, transformFct?:(string:string)=>string):Promise<DataExtractorResult> {
   let value;
   try {
     const element = await page.waitForSelector(selector);
@@ -27,13 +22,7 @@ export async function extractTextContent(page:Page,
   };
 }
 
-export async function extractAttribute(page:Page, 
-  label:string, 
-  type:DataType, 
-  selector:string, 
-  attributeName:string,
-  transformFct?:(string:string)=>string
-):Promise<DataExtractorResult> {
+export async function extractAttribute(page:Page, label:string, type:DataType, selector:string, attributeName:string, transformFct?:(string:string)=>string):Promise<DataExtractorResult> {
   let value;
   try {
     const element = await page.waitForSelector(selector);
@@ -54,13 +43,7 @@ export async function extractAttribute(page:Page,
   };
 }
 
-export async function extractCSS(page:Page, 
-  label:string, 
-  type:DataType, 
-  selector:string, 
-  propertyName:string,
-  transformFct?:(string:string)=>string
-):Promise<DataExtractorResult> {
+export async function extractCSS(page:Page, label:string,  type:DataType, selector:string, propertyName:string, transformFct?:(string:string)=>string):Promise<DataExtractorResult> {
   let value;
   try {
     const element = await page.waitForSelector(selector);
