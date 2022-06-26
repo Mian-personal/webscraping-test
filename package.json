@@ -1,20 +1,20 @@
 {
   "name": "webscraping-test",
   "version": "1.0.0",
+  "private": true,
   "description": "",
-  "main": "lib/server.js",
+  "main": "src/server.tsx",
   "scripts": {
-    "dev:copy-files": "copyfiles -u 1 ./src/index.html ./dist/",
-    "dev:tsc": "tsc --watch -p .",
-    "dev:serve": "nodemon -e js -w dist dist/server.js",
-    "dev": "run-p dev:*"
+    "serve": "ts-node-dev --respawn src/server.tsx"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.2",
+    "@chakra-ui/react": "^2.2.1",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "@hapi/hapi": "^20.2.2",
-    "nodemon": "^2.0.16",
-    "npm-run-all": "^4.1.5",
+    "framer-motion": "^6.3.15",
+    "puppeteer": "^15.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -23,7 +23,11 @@
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
-    "copyfiles": "^2.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0",
+    "eslint-plugin-react": "^7.30.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^4.7.4"
   }
 }
