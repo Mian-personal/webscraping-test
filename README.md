@@ -10,7 +10,7 @@ Tu développeras un back-end & un front-end qui permettront notamment d'afficher
 Tu peux récupérer les données d'une ou plusieurs sources, comme par exemple LinkedIn, societe.com, …
 
 ## Conception et choix
-J'ai abordé ce test technique comme une occassion d'apprendre de nouvelles choses (SSR, Hapi) et de réviser mes bases techniques. C'est pourquoi j'ai choisi de ne pas partir d'un Bootstrapper, mais de reconstruire les bases moi même et elles peuvent donc paraitre simplistes (pas de build notamment). 
+J'ai abordé ce test technique comme une occassion d'apprendre de nouvelles choses (SSR, Hapi) et de réviser mes bases techniques. C'est pourquoi j'ai choisi de ne pas partir d'un Bootstrapper, mais de reconstruire les bases moi même et elles peuvent donc paraitre simplistes. 
 
 Une des contraintes du web scraping est l'instabilité des sources et il faut pouvoir facilement mettre à jour la logique d'extraction. Donc j'ai mis l'accent sur isolation des sources de données et des extracteurs de données, ainsi que sur la Fault Tolerance avec feedback à l'utilisateur.
 
@@ -38,12 +38,11 @@ Une des contraintes du web scraping est l'instabilité des sources et il faut po
 - [x] Elastic Beanstalk deployment
 - [x] Conclusion
 
-## Limites connues
+## Conclusion et limites connues
+- Comme précisé au début, la configuration générale peut paraitre simple, mais je la maitrise entièrement
 - La construction des URLs pour chaque source n'est pas du tout robuste, mais je pense que ce n'était aps l'enjeu du test technique. Comme solution envisagée, il aurait été possible de chercher des sources supplémentaires dans les sources explorées
-- Je n'ai pas fait de tests... Il y a 3 fichiers qui auraient pu en mériter  
-
-## Conclusion
-- Très déçu du SSR, le mettre en place sur le First Load a été très simple, mais pour répondre à des cas d'usage plus réaliste la complexité grimpe en flèche. La solution consiste aujourd'hui à utiliser des frameworks comme Next.js ou Gatsby.
+- Je n'ai pas fait de tests... Il y a très peu de logique qui en auraient mérité
+- Très déçu du SSR, le mettre en place sur le First Load a été très simple, mais pour répondre à des cas d'usage plus réaliste la complexité grimpe en flèche. La solution consiste aujourd'hui à utiliser des frameworks comme Next.js ou Gatsby. 
 - Finalement j'ai décidé de développer la partie asynchrone de récupération des données côté serveur, avant de faire le rendu React après. Malheureusemet cela donne une expérience utilisateur vraiment mauvaise (15+s en cas de timeout).
 - L'incompatibilité entre les moduldes CommonJS et ESM, et les ajustements de configuration à faire sans Bootstrapper m'ont vraiment pris beaucoup de temps, mais maintenant je pense avoir compris.
 - Le déploiement sur Elastic Beanstalk était plus compliqué que je ne m'y attendais. Entre le packaging de tout le code nécessaire en zip et le fait que Puppeteer ne tourne pas par défaut sur des machines Amazon Linux, cela m'a demandé de creuser des sujets qui ne m'étais pas familier.
